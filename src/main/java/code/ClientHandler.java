@@ -56,6 +56,30 @@ public class ClientHandler implements Runnable{
                 }
             }else{
                 System.out.println("文件不存在");
+                File notFoundPage = new File( "./webapps/root/404.html" ); //错误信息的页面       //6.1
+                OutputStream out = socket.getOutputStream();
+                String line = "HTTP/1.1 404 NOT FOUND";  //发送错误页面的状态行
+                out.write( line.getBytes( "ISO-8859-1" ) );
+                out.write( 13 );
+                out.write( 10 );
+                line = "Conten-Type: texe/html";//响应头
+                out.write( line.getBytes( "ISO-8859-1" ) );
+                out.write( 13 );
+                out.write( 10 );
+                line = "Conten-Length:" +notFoundPage.length();//响应头
+                out.write( line.getBytes( "ISO-8859-1" ) );
+                out.write( 13 );
+                out.write( 10 );
+                //单独发送发送crlf表示响应头发送完毕
+                out.write(13);//written CR
+                out.write(10);//written LF
+                //发送响应正文
+                FileInputStream fis = new FileInputStream( notFoundPage );
+                int len = -1;
+                byte[] data = new byte[1024*10];
+                while((len =fis.read( data ))!=-1){
+                    out.write(data,0,len  );//读取错误信息页面并发送给客户端
+                }
             }
             System.out.println("ClientHandler：解析请求完毕");                        //3.7
 //            3、响应客户端
