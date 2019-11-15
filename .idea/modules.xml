@@ -3,8 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/all.iml" filepath="$PROJECT_DIR$/all.iml" />
-      <module fileurl="file://$PROJECT_DIR$/all.iml" filepath="$PROJECT_DIR$/all.iml" />
-      <module fileurl="file://$PROJECT_DIR$/wabapps/wabapps.iml" filepath="$PROJECT_DIR$/wabapps/wabapps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webapps/wabapps.iml" filepath="$PROJECT_DIR$/webapps/wabapps.iml" />
     </modules>
   </component>
 </project>
